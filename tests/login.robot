@@ -1,16 +1,13 @@
 *** Settings ***
-Documentation    Testes de login
+Documentation        Testes de login
 
 Resource        ../resources/base.resource
 
+Test Setup        Start session
+Test Teardown     Finish session
 
 *** Test Cases ***
 Deve logar com sucesso
-    Start session
 
-    Input Text            xpath=//*[@resource-id="apiIp"]        <API-IP>
-    Click Element         xpath=//*[@resource-id="signInButton"]
-
+    Do login
     Wait Until Page Contains        Minhas tarefas        5
-
-    Close session

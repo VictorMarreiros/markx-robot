@@ -3,6 +3,9 @@ Documentation        Tudo deve começar neste arquivo
 
 Library    AppiumLibrary
 
+Resource    ./screens/login.resource
+Resource    ./screens/tasks.resource
+
 *** Keywords ***
 Start session
     
@@ -16,6 +19,6 @@ Start session
 
     Wait Until Page Contains    Endereço IP da Api    10
 
-Close session
+Finish session
     Capture Page Screenshot
     Close Application
