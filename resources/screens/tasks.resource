@@ -15,3 +15,19 @@ Create a new task
 
     Input Text                        ${new_task_input}        ${task_name}
     Click Element                     ${create_button}
+
+
+Should have task
+    [Arguments]    ${task_name}
+    Wait Until Element Is Visible     xpath=//*[@resource-id="taskText"][@text="${task_name}"]    5
+
+Remove task by name
+    [Arguments]    ${task_name}
+    Click Element                        xpath=//*[@text="${task_name}"]/../..//*[@resource-id="removeTask"]
+
+    ${button}    Set Variable    xpath=//*[@text="SIM"]
+    
+    Wait Until Element Is Visible        ${button}
+    Click Element                        ${button}
+
+

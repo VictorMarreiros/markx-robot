@@ -8,6 +8,25 @@ Test Teardown     Finish session
 
 *** Test Cases ***
 Deve poder cadastrar uma nova tarefa
+    
+    ${task}    Set Variable    Estudar Python - Pandas
+    Remove task from database    ${task}
+    
     Do login
     
-    Create a new task    Estudar Python - Pandas
+    Create a new task    ${task}
+    Should have task     ${task}
+
+Deve poder remover uma tarefa indesejada
+    [Tags]    remove
+
+    ${task}    Set Variable    Comprar refrigerante
+    Remove task from database    ${task}
+
+    Do login
+    Create a new task      ${task}
+    Should have task       ${task}
+
+    Remove task by name    ${task}
+
+    Wait Until Page Does Not Contain     ${task}
