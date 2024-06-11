@@ -30,3 +30,17 @@ Deve poder remover uma tarefa indesejada
     Remove task by name    ${task}
 
     Wait Until Page Does Not Contain     ${task}
+
+Deve pode concluir uma tarefa
+    [Tags]    remove
+
+    ${task}    Set Variable    Estudar XPath
+    Remove task from database    ${task}
+
+    Do login
+    Create a new task       ${task}
+    Should have task        ${task}
+
+    Finish task             ${task}
+
+    Task should be done     ${task}
